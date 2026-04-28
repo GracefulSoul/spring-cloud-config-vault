@@ -352,10 +352,10 @@ vault kv list secret/data/client-app
 
 ## 참고자료
 
-- [Spring Cloud Config 공식 문서](https://spring.io/projects/spring-cloud-config){:target="_blank"}
-- [Spring Cloud Vault 공식 문서](https://spring.io/projects/spring-cloud-vault){:target="_blank"}
-- [HashiCorp Vault 공식 문서](https://www.vaultproject.io/docs){:target="_blank"}
-- [Spring Boot Configuration Properties](https://spring.io/projects/spring-boot){:target="_blank"}
+- [Spring Cloud Config 공식 문서](https://spring.io/projects/spring-cloud-config)
+- [Spring Cloud Vault 공식 문서](https://spring.io/projects/spring-cloud-vault)
+- [HashiCorp Vault 공식 문서](https://www.vaultproject.io/docs)
+- [Spring Boot Configuration Properties](https://spring.io/projects/spring-boot)
 
 ## 라이선스
 
