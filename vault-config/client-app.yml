@@ -1,0 +1,58 @@
+# Config Server에서 제공하는 client-app 공통 설정
+# 이 파일은 Git 저장소에 저장되고 Config Server를 통해 제공됩니다.
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        format_sql: true
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+
+  datasource:
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 20000
+      idle-timeout: 300000
+      max-lifetime: 1200000
+
+app:
+  name: Client Application
+  version: 1.0.0
+  environment: ${ENVIRONMENT:development}
+  
+  database:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/myapp_db}
+    username: ${DATABASE_USER:appuser}
+    password: ${DATABASE_PASSWORD:password123}
+    max-pool-size: 10
+    
+  security:
+    jwt-secret: ${JWT_SECRET:default-jwt-secret-key}
+    jwt-expiration: 86400000
+    api-key: ${API_KEY:default-api-key}
+
+logging:
+  level:
+    root: INFO
+    com.gracefulsoul: DEBUG
+    org.springframework.cloud: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env,configprops
+  metrics:
+    export:
+      simple:
+        enabled: true

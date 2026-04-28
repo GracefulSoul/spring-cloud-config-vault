@@ -1,0 +1,67 @@
+# Vault 설정 파일
+# Spring Cloud Vault 통합 설정
+
+vault:
+  host: localhost
+  port: 8200
+  scheme: http
+  authentication: TOKEN
+  token: s.xxxxxxxxxxxxxxxx
+  
+  # Generic Secret Engine (v1)
+  generic:
+    enabled: true
+    backend: secret
+    profile-separator: '/'
+    default-context: client-app
+    
+  # Key-Value Secret Engine (v2)
+  kv:
+    enabled: true
+    backend: secret
+    version: 2
+    profile-separator: '/'
+    
+  # Database Secret Engine
+  database:
+    enabled: false
+    backends:
+      - backend: postgresql
+        role: client-app-role
+        
+  # PKI (Public Key Infrastructure)
+  pki:
+    enabled: false
+    backend: pki
+    role: client-app
+
+# Config Server 연결 설정
+spring:
+  cloud:
+    vault:
+      # Token 기반 인증 (개발 환경)
+      authentication: TOKEN
+      token: s.xxxxxxxxxxxxxxxx
+      
+      # AppRole 기반 인증 (프로덕션 환경)
+      # authentication: APPROLE
+      # app-role:
+      #   role-id: <ROLE_ID>
+      #   secret-id: <SECRET_ID>
+      
+      # Kubernetes 인증 (Kubernetes 환경)
+      # authentication: KUBERNETES
+      # kubernetes:
+      #   role: client-app
+      #   kubernetes-path: kubernetes
+      
+      generic:
+        enabled: true
+        backend: secret
+        profile-separator: '/'
+      
+      kv:
+        enabled: true
+        backend: secret
+        version: 2
+        profile-separator: '/'

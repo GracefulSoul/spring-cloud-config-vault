@@ -1,0 +1,29 @@
+# client-app-dev.yml
+# 개발 환경 설정
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+
+app:
+  environment: development
+  
+  database:
+    url: jdbc:postgresql://localhost:5432/myapp_dev
+    username: dev_user
+    password: dev_password_123
+    max-pool-size: 5
+
+logging:
+  level:
+    root: DEBUG
+    com.gracefulsoul: DEBUG
+    org.springframework: DEBUG
+    org.springframework.cloud.config: DEBUG
+    org.springframework.cloud.vault: DEBUG
